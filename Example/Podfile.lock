@@ -1,0 +1,14 @@
+PODS:
+  - UICategory (1.0.0)
+
+DEPENDENCIES:
+  - UICategory (from `../`)
+
+EXTERNAL SOURCES:
+  UICategory:
+    :path: ../
+
+SPEC CHECKSUMS:
+  UICategory: 72ff41036aa67c659ea65cae54fc68098f88b965
+
+COCOAPODS: 0.34.4
