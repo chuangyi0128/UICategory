@@ -12,39 +12,74 @@
 
 + (UIViewController *)topmostViewController
 {
-    //rootViewController需要是TabBarController,排除正在显示FirstPage的情况
     UIViewController *rootViewContoller = [UIApplication sharedApplication].delegate.window.rootViewController;
-    if (!rootViewContoller || ![rootViewContoller isKindOfClass:[UITabBarController class]]) {
+    if (!rootViewContoller) {
         return nil;
     }
     
-    //当前显示哪个tab页
-    UINavigationController *rootNavController = (UINavigationController *) [(UITabBarController*)rootViewContoller selectedViewController];
-    if (!rootNavController) {
-        return nil;
-    }
-    
-    UINavigationController *navController = rootNavController;
-    while ([navController isKindOfClass:[UINavigationController class]]) {
-        UIViewController *topViewController = [navController topViewController];
-        if ([topViewController isKindOfClass:[UINavigationController class]]) { //顶层是个导航控制器，继续循环
-            navController = (UINavigationController *) topViewController;
-        } else {
-            //是否有弹出presentViewControllr;
-            UIViewController *presentedViewController = topViewController.presentedViewController;
-            while (presentedViewController) {
-                topViewController = presentedViewController;
-                if ([topViewController isKindOfClass:[UINavigationController class]]) {
-                    break;
-                } else {
-                    presentedViewController = topViewController.presentedViewController;
-                }
-            }
-            navController = (UINavigationController *) topViewController;
+    if ([rootViewContoller isKindOfClass:[UITabBarController class]]) {
+        //当前显示哪个tab页
+        UINavigationController *rootNavController = (UINavigationController *) [(UITabBarController*)rootViewContoller selectedViewController];
+        if (!rootNavController) {
+            return nil;
         }
+        
+        UINavigationController *navController = rootNavController;
+        while ([navController isKindOfClass:[UINavigationController class]]) {
+            UIViewController *topViewController = [navController topViewController];
+            if ([topViewController isKindOfClass:[UINavigationController class]]) { //顶层是个导航控制器，继续循环
+                navController = (UINavigationController *) topViewController;
+            } else {
+                //是否有弹出presentViewControllr;
+                UIViewController *presentedViewController = topViewController.presentedViewController;
+                while (presentedViewController) {
+                    topViewController = presentedViewController;
+                    if ([topViewController isKindOfClass:[UINavigationController class]]) {
+                        break;
+                    } else {
+                        presentedViewController = topViewController.presentedViewController;
+                    }
+                }
+                navController = (UINavigationController *) topViewController;
+            }
+        }
+        return navController;
     }
-    return (UIViewController *) navController;
+    else if ([rootViewContoller isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *navController = (UINavigationController *)rootViewContoller;
+        while ([navController isKindOfClass:[UINavigationController class]]) {
+            UIViewController *topViewController = [navController topViewController];
+            if ([topViewController isKindOfClass:[UINavigationController class]]) { //顶层是个导航控制器，继续循环
+                navController = (UINavigationController *) topViewController;
+            } else {
+                //是否有弹出presentViewControllr;
+                UIViewController *presentedViewController = topViewController.presentedViewController;
+                while (presentedViewController) {
+                    topViewController = presentedViewController;
+                    if ([topViewController isKindOfClass:[UINavigationController class]]) {
+                        break;
+                    } else {
+                        presentedViewController = topViewController.presentedViewController;
+                    }
+                }
+                navController = (UINavigationController *) topViewController;
+            }
+        }
+        return navController;
+    }
+    else {
+        //是否有弹出presentViewControllr;
+        UIViewController *presentedViewController = rootViewContoller.presentedViewController;
+        while (presentedViewController) {
+            rootViewContoller = presentedViewController;
+            if ([rootViewContoller isKindOfClass:[UINavigationController class]]) {
+                break;
+            } else {
+                presentedViewController = rootViewContoller.presentedViewController;
+            }
+        }
+        return rootViewContoller;
+    }
 }
-
 
 @end
