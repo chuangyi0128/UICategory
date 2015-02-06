@@ -1,5 +1,5 @@
 PODS:
-  - UICategory (1.0.0)
+  - UICategory (1.0.2)
 
 DEPENDENCIES:
   - UICategory (from `../`)
@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  UICategory: 72ff41036aa67c659ea65cae54fc68098f88b965
+  UICategory: 9c17048c9105e3d3f145285923723bd0bcc8efe8
 
 COCOAPODS: 0.34.4
