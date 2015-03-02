@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "UICategory"
-  s.version          = "1.0.3"
+  s.version          = "1.0.4"
   s.summary          = "UICategory"
   s.description      = "UIImage+Crop
                         UIViewController+TopmostViewController"
