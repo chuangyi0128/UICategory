@@ -13,11 +13,11 @@
 /**
  *  RGB，如0x887766
  */
-- (instancetype)colorWithHex:(NSInteger)hexValue;
++ (instancetype)colorWithHex:(NSInteger)hexValue;
 
 /**
  *  RGBA，如0x887766ff
  */
-- (instancetype)colorWithAlphaHex:(NSInteger)hexValue;
++ (instancetype)colorWithAlphaHex:(NSInteger)hexValue;
 
 @end
