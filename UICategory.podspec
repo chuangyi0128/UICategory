@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "UICategory"
-  s.version          = "1.0.9"
+  s.version          = "1.0.10"
   s.summary          = "UICategory"
   s.description      = "UICategory."
   s.homepage         = "https://github.com/chuangyi0128/UICategory"
