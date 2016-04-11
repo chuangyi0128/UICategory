@@ -9,10 +9,9 @@
 
 Pod::Spec.new do |s|
   s.name             = "UICategory"
-  s.version          = "1.0.7"
+  s.version          = "1.0.8"
   s.summary          = "UICategory"
-  s.description      = "UIImage+Crop
-                        UIViewController+TopmostViewController"
+  s.description      = "UICategory."
   s.homepage         = "https://github.com/chuangyi0128/UICategory"
   s.license          = 'MIT'
   s.author           = { "SongLi" => "chuangyi0128@gmail.com" }
