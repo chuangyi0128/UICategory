@@ -13,7 +13,7 @@
 + (UIViewController *)topmostViewController
 {
     UIViewController *rootViewContoller = [UIApplication sharedApplication].delegate.window.rootViewController;
-    return [UIViewController topViewController:rootViewContoller];
+    return [UIViewController topViewControllerInController:rootViewContoller];
 }
 
 + (UIViewController *)topViewControllerInController:(UIViewController *)viewController
