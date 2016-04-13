@@ -1,9 +1,7 @@
 //
 //  UIColor+Hex.h
-//  Pods
 //
 //  Created by SongLi on 2/28/15.
-//
 //
 
 #import <UIKit/UIKit.h>
