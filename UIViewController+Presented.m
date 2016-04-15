@@ -12,11 +12,13 @@
 
 - (BOOL)SLR_isBePresented
 {
-    if (self.parentViewController == self.navigationController && self.navigationController.parentViewController == nil && self.presentingViewController) {
-        return YES;
-    } else {
-        return NO;
+    BOOL isNavigationRoot = ([self.navigationController.viewControllers firstObject] == self);
+    UIViewController *controller = self;
+    if (isNavigationRoot) {
+        controller = self.navigationController;
     }
+    
+    return (!controller.parentViewController && controller.presentingViewController);
 }
 
 @end
